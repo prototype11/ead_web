@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="~/Content/custom/css/vendor/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="~/Content/custom/css/flat-ui.min.css" rel="stylesheet">
+    <link href="~/Content/custom/css/style.css" rel="stylesheet">
+    <!-- Loading Fonts -->
+    <link href="~/Content/custom/css/icomoon.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="shortcut icon" href="~/Content/custom/img/favicon.ico">
+    
+    <!-- Froala Editor -->
+    <link href="~/Content/custom/css/froala_style.min.css" rel="stylesheet" />
+    <link href="~/Content/custom/css/froala_content.min.css" rel="stylesheet" />
+    
+    <!-- Fancy Box -->
+    <link href="~/Content/custom/css/jquery.fancybox.css" rel="stylesheet" media="screen" />
+
+    @RenderSection("CSS", required: false)
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="~/Scripts/custom/vendor/html5shiv.js"></script>
+      <script src="~/Scripts/custom/vendor/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="wrapper-main-ead">
+        <header>
+            <nav>
+                <ul class="vertical-center-ead">
+                    <li>
+                        <a href="@Url.Action("feed", "Post")">
+                            <span class="icon-home"></span>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                </ul>
+                <div id="search-wrapper-ead" class="vertical-center-ead">
+                    <form action="@Url.Action("searchByTag","Post")" method="post">
+                    @*@Html.BeginForm("searchByTag","Post",FormMethod.Post)*@
+                        <div class="input-group">
+                            <div class="input-group-addon input-sm"><span class="icon-search"></span></div>
+                            <input type="text" class="form-control input-sm" id="search-input" placeholder="Search..." name="key">
+                        </div>
+                        <button style="display:none" type="submit"></button>
+                    </form>
+                    
+                </div>
+            </nav>
+            <ul id="account-manage-options-ead" class="vertical-center-ead">
+                <li>
+                    <a href="@Url.Action("profile", "User")">
+                        <span class="icon-profile"></span>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("newPost", "Post")">
+                        <span class="icon-blog"></span>
+                        <span>Publish</span>
+                    </a>
+                </li>
+                <li>
+                    <span class="icon-user"></span>
+                    <span id="login-trigger-ead">Login</span>
+                    <div id="bubble-login-ead" class="no-display-ead">
+                        <form id="login-form-ead" method="post" action="@Url.Action("login","User")">
+                        @*@Html.BeginForm("login","User",FormMethod.Post,new{id = "login-form-ead"})*@
+                            <div class="input-group">
+                                <div class="input-group-addon input-sm"><span class="icon-user"></span></div>
+                                <input class="input-sm" type="text" placeholder="Username" name="Name" required/>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-addon input-sm"><span class="icon-key"></span></div>
+                                <input class="input-sm" type="text" placeholder="Password" name="Password" required/>
+                            </div>
+                            <button type="submit">Login</button>
+                        </form>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon-user-plus"></span>
+                    <span id="signup-trigger-ead">Signup</span>
+                    <div id="bubble-signup-ead" class="no-display-ead">
+                        <form id="signup-form-ead" method="post" action="@Url.Action("signup","User")">
+                        @*@Html.BeginForm("signup", "User", FormMethod.Post, new { Id = "signup-form-ead" })*@
+                            <div class="input-group">
+                                <div class="input-group-addon input-sm"><span class="icon-mail2"></span></div>
+                                <input class="input-sm" type="text" placeholder="Email Address" name="Email" required/>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-addon input-sm"><span class="icon-user"></span></div>
+                                <input class="input-sm" type="text" placeholder="Username" id="signup-name-ead" required />
+                            </div>
+                            <span id="verify-result-ead"></span>
+                            <button type="button" id="btn-verify-name-ead">Verify</button>
+                            <div class="input-group">
+                                <div class="input-group-addon input-sm"><span class="icon-key"></span></div>
+                                <input class="input-sm" type="text" placeholder="Password" name="Password" required />
+                            </div>
+                            <button type="submit">Signup</button>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </header>
+        @RenderBody()
+
+        <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
+        <script src="@Url.Content("~/Scripts/custom/vendor/jquery.min.js")"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="@Url.Content("~/Scripts/custom/flat-ui.min.js")"></script>
+        <script src="@Url.Content("~/Scripts/custom/vendor/jquery.fancybox.pack.js")"></script>
+        <script src="@Url.Content("~/Scripts/custom/scripts.js")"></script>
+        <script src="@Url.Content("~/Scripts/custom/jquery.validate.js")"></script>
+        <script src="@Url.Content("~/Scripts/custom/topbar.js")"></script>
+        @RenderSection("JavaScript", required: false)
+</body>
+</html>

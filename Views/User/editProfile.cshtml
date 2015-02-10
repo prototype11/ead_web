@@ -1,0 +1,66 @@
+﻿@section JavaScript{
+    <script type="text/javascript">
+        $("#profile-form-ead").validate({
+            errorPlacement: function (error, element) {
+                element.parent().after(error);
+            }
+        });
+    </script>
+}
+
+ @model ead_web_project.Models.User
+     <div id="wrapper-content-ead">
+      <div class="container-fluid">
+        <div class="row">
+          <div id="main-content-ead" class="col-sm-6 col-sm-offset-3">
+            <div id="content-panel-ead" class="panel panel-default">
+              <div id="content-body-ead">
+                <div class="content-post-ead">
+                  <header>
+                    <span id="content-title-ead"><h2>Edit Profile</h2></span>
+                  </header>
+                  <form id="profile-form-ead" method="post" action="@Url.Action("updateProfile","User")">
+                    <div class="input-group">
+                      <div class="input-group-addon input-sm"><span class="icon-user"></span></div>
+                        @Html.TextBoxFor(m => m.Name, new { @class = "input-sm", type = "text", value = "@Model.Name", placeholder = "Username", name = "Name", @required = "required" })
+                        <!--input class="input-sm" type="text" value="@Model.Name" placeholder="Username" name="Name" /-->
+                    </div>
+                    <div class="input-group">
+                      <div class="input-group-addon input-sm"><span class="icon-mail2"></span></div>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "input-sm", type = "text", value = "@Model.Email", placeholder = "Email", name = "Email", @required = "required"})
+                        <!--input class="input-sm" type="text" value="@Model.Email" placeholder="Email" name="Email" /-->
+                    </div>
+                    <div class="input-group">
+                      <div class="input-group-addon input-sm"><span class="icon-key"></span></div>
+                      <input class="input-sm" type="text" placeholder="Password" name="Password" required/>
+                    </div>
+                    <div class="input-group">
+                      <div class="input-group-addon input-sm"><span class="icon-phone"></span></div>
+                        <input class="input-sm" type="text" value="@Model.Contact" placeholder="Contact Number" name="Contact" required/>
+                    </div>
+                    <div class="input-group">
+                      <div class="input-group-addon input-sm"><span class="icon-calendar"></span></div>
+                        <input class="input-sm" type="text" value="@Model.DOB" placeholder="DOB" name="DOB" required/>
+                    </div>
+                    <div class="input-group">
+                      <div class="input-group-addon input-sm"><span class="icon-quill"></span></div>
+                        <input class="input-sm" type="text" value="@Model.Profession" placeholder="Profession" name="Profession" required/>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-addon input-sm"><span class="icon-flag"></span></div>
+                        <input class="input-sm" type="text" value="@Model.Country" placeholder="Country" name="Country" required/>
+                    </div>
+                    <button class="pull-right">Update</button>
+                  </form>
+                </div>
+              </div>
+              <!--footer>
+                <span>Footer</span>
+              </footer-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.container -->
+    </div>
+  </div>

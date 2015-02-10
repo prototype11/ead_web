@@ -1,0 +1,60 @@
+﻿@model List<ead_web_project.Models.Post>
+    <div id="wrapper-content-ead">
+      <div class="container-fluid">
+        <div class="row">
+            <div id="left-sidebar-ead" class="vertical-center-ead">
+                <div id="tag-info-ead" class="panel panel-default">
+                    <h1>
+                        Feed
+                    </h1>
+                </div>
+            </div>
+        <div id="main-content-ead" class="col-sm-8 col-sm-offset-4 col-md-6 col-md-offset-3-5">
+            <div id="content-panel-ead" class="panel panel-default">
+              <header>
+                <span id="content-title-ead">Tag/Author</span>
+              </header>
+              <div id="content-body-ead">
+                @foreach(var x in Model){
+                <div class="content-post-ead">
+                    <a href="@Url.Action("viewPost", "Post")/@x.Id"><span class="post-title-ead">@x.Title</span></a>
+                  <span class="post-time-ead">@x.Date</span>
+                  <span class="post-author-ead">By <a href="@Url.Action("searchByAuthor","Post")/@x.User.Name">@x.User.Name</a></span>
+                  <p class="post-content-ead froala-view">
+                    @Html.Raw(x.Content)
+                  </p>
+                  <footer>
+                    <ul class="post-tags-ead">
+                      <li>
+                        <span class="icon-price-tags"></span>
+                      </li>
+                        @foreach (var tag in x.Tags)
+                        {
+                            <li>@tag.Name</li>
+                        }
+                    </ul>
+                    <ul class="post-attr-ead">
+                      <li>
+                        <span>@x.Comments.Count() responses</span>
+                        <span class="icon-bubbles4"></span>
+                      </li>
+                      <li>
+                        <span>@x.Likes.Count() like it</span>
+                        <span class="icon-heart"></span>
+                      </li>
+                    </ul>
+                  </footer>
+                  <hr />
+                </div>
+                }
+              </div>
+              <footer>
+                <span>Footer Stuff</span>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.container -->
+    </div>
+  </div>
