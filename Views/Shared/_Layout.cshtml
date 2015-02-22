@@ -34,7 +34,7 @@
       <script src="~/Scripts/custom/vendor/respond.min.js"></script>
     <![endif]-->
 </head>
-<body data-base="http://localhost:57108/">
+<body data-base="http://bcsf11m003.apphb.com/">
     <div id="wrapper-main-ead">
         <header>
             <nav>
@@ -62,28 +62,28 @@
                 }
             </nav>
             @if ((System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
-                {
-                    <ul id="account-manage-options-ead" class="vertical-center-ead">
-                        <li>
-                            <a href="@Url.Action("profile", "User")">
-                                <span class="icon-profile"></span>
-                                <span>Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("newPost", "Post")">
-                                <span class="icon-blog"></span>
-                                <span>Publish</span>
-                            </a>
-                        </li>
-                
-                        <li>
-                            <a href="@Url.Action("logout", "User")">
-                                <span class="icon-user"></span>
-                                <span>Logout</span>
-                            </a>
-                        </li>
-            </ul>
+            {
+                <ul id="account-manage-options-ead" class="vertical-center-ead">
+                    <li>
+                        <a href="@Url.Action("profile", "User")">
+                            <span class="icon-profile"></span>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("newPost", "Post")">
+                            <span class="icon-blog"></span>
+                            <span>Publish</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("logout", "User")">
+                            <span class="icon-user"></span>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
             }
         </header>
         @RenderBody()
@@ -137,4 +137,5 @@
         </script>
         @RenderSection("JavaScript", required: false)
 </body>
+
 </html>
