@@ -1,0 +1,58 @@
+﻿@section JavaScript{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/custom/vendor/froala/froala_editor.min.js")"></script>
+    <script type="text/javascript">
+        $('#editor-ead').editable({
+            inlineMode: false,
+            allowedImageTypes: ["jpeg", "jpg"],
+            imageUploadURL: '@Url.Action("uploadImage","post")'
+        });
+        $("#post-form-ead").validate({
+            errorPlacement: function (error, element) {
+                element.parent().after(error);
+            }
+        });
+    </script>
+}
+
+@section CSS
+{
+    <link href="~/Content/custom/css/froala_editor.min.css" rel="stylesheet" />
+    <link href="~/Content/custom/css/font-awesome.css" rel="stylesheet" />
+}
+
+    <div id="wrapper-content-ead">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div id="main-content-ead" class="col-sm-10 col-sm-offset-1">
+                            <div id="content-panel-ead" class="panel panel-default">
+                                <div id="content-body-ead">
+                                    <div class="content-post-ead">
+                                        <header>
+                                            <span id="content-title-ead"><h2>Submit News</h2></span>
+                                        </header>
+                                        <form id="post-form-ead" method="post" action="@Url.Action("savePost","Post")">
+                                            <div class="input-group">
+                                                <div class="input-group-addon input-sm"><span class="icon-pen"></span></div>
+                                                @Html.TextBox("Title", "", new { @class = "input-sm", type = "text", placeholder = "Title", required = "required" })
+                                                <!--input class="input-sm" type="text" placeholder="Title" name="Title" /-->
+                                            </div>
+                                            <div class="input-group">
+                                                <div class="input-group-addon input-sm"><span class="icon-price-tags"></span></div>
+                                                <input class="input-sm" type="text" placeholder="Tags" name="Tags" required/>
+                                            </div>
+                                            @Html.TextArea("Content", new { id="editor-ead"})
+                                            <!--textarea id="editor-ead-bk" name="Content"></textarea-->
+                                            <button class="pull-right" type="submit">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!--footer>
+                                  <span>Footer</span>
+                                </footer-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container -->
+            </div>
+        </div>

@@ -1,0 +1,62 @@
+﻿@section JavaScript{
+    
+}
+@model ead_news.Models.User
+    <div id="wrapper-content-ead">
+      <div class="container-fluid">
+        <div class="row">
+        <h2>@ViewBag.Message</h2>
+        <div id="login-wrapper-ead" style="">
+          <div class="form-container-ead">
+            <h2>Login</h2>
+            @*<form id="login-form-ead">*@
+            @using (Html.BeginForm("login", "User", FormMethod.Post, new { id = "login-form-ead" })) {
+                            @Html.ValidationSummary(true)
+              <div class="input-group">
+                <div class="input-group-addon input-sm"><span class="icon-user"></span></div>
+                @*<input class="input-sm" type="text" placeholder="Username" />*@
+                @Html.TextBoxFor(m => m.Name, new { @class = "input-sm", placeholder = "Username" })
+              </div>
+              <div class="input-group">
+                <div class="input-group-addon input-sm"><span class="icon-key"></span></div>
+                @*<input class="input-sm" type="text" placeholder="Password" />*@
+                @Html.TextBoxFor(m => m.Password, new { @class = "input-sm", placeholder = "Password" })
+              </div>
+              <button>Login</button>
+            @*</form>*@
+            }
+          </div>
+          <div class="form-container-ead">
+            <h2>Signup</h2>
+            @*<form id="signup-form-ead">*@
+            @using (Html.BeginForm("signup", "User", FormMethod.Post, new { id = "signup-form-ead" })) {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+              <div class="input-group">
+                <div class="input-group-addon input-sm"><span class="icon-mail2"></span></div>
+                @*<input class="input-sm" type="text" placeholder="Email Address" required/>*@
+                @Html.TextBoxFor(m => m.Email, new { @class = "input-sm", placeholder = "Email Address" })
+              </div>
+              <div class="input-group">
+                <div class="input-group-addon input-sm"><span class="icon-user"></span></div>
+                @*<input class="input-sm" type="text" placeholder="Username" id="signup-name-ead" required />*@
+                @Html.TextBoxFor(m => m.Name, new { @class = "input-sm", id = "signup-name-ead", placeholder = "Username" })
+              </div>
+              <button id="btn-verify-name-ead">Verify</button>
+              <span id="verify-result-ead"></span>
+              <div class="input-group">
+                <div class="input-group-addon input-sm"><span class="icon-key"></span></div>
+                @*<input class="input-sm" type="text" placeholder="Password" required />*@
+                @Html.TextBoxFor(m => m.Password, new { @class = "input-sm", placeholder = "Password" })
+              </div>
+              <button type="submit">Signup</button>
+            @*</form>*@
+            }
+          </div>
+          <div style="clear:both"></div>
+        </div>
+        </div>
+      </div>
+      <!-- /.container -->
+    </div>
+  </div>
